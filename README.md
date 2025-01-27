@@ -1,0 +1,1 @@
+* Website where user can signup, signin, see all courses, get the purchased courses
