@@ -4,7 +4,7 @@ const { userModel } = require("../db");
 const jwt = require("jsonwebtoken");
 const userRouter = Router();
 
-const JWT_SECRET_USER = "userrandoml235u0ojsdlna";
+const JWT_SECRET_USER = process.env.JWT_USER_SECRET;
 
 userRouter.post("/signup", async (req, res) => {
   const { email, firstName, lastName, password } = req.body;

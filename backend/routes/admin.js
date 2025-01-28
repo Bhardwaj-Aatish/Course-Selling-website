@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const { adminModel } = require("../db");
 const adminRouter = Router();
 
-const JWT_SECRET_ADMIN = "adminrandoml2u42ljsdof";
+const JWT_SECRET_ADMIN = process.env.JWT_ADMIN_SECRET;
 
 adminRouter.post("/signup", async (req, res) => {
   const { email, firstName, lastName, password } = req.body;
@@ -40,7 +40,6 @@ adminRouter.post("/signin", async (req, res) => {
 
   try {
     const { success, error } = adminSchema.safeParse(req.body);
-    console.log("admin signin", success, error);
 
     if (!success) {
       const errorDetails = error.errors.map((e) => e.message).join(", ");

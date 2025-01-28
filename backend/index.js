@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const { userRouter } = require("./routes/user");
@@ -12,9 +13,7 @@ app.use("/admin", adminRouter);
 
 async function main() {
   try {
-    await mongoose.connect(
-      "mongodb+srv://aatishmongodb:Sourav1stCiena@cluster0.kcfiu.mongodb.net/course-selling-app?retryWrites=true&w=majority&appName=Cluster0"
-    );
+    await mongoose.connect(process.env.MONGO_URI);
     console.log("Connected to the database");
   } catch (e) {
     console.log("Unable to connect to the database");
